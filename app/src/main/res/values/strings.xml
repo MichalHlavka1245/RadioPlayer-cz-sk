@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Radio Player CZSK</string>
+
+    <string name="success_saved">Úspešne uložené:</string>
+    <string name="seconds">sekúnd</string>
+    <string name="minutes">minút</string>
+    <string name="hours">hodín</string>
+    <string name="error_saving_stats">Chyba pri ukladaní štatistík</string>
+    <string name="no_stats_yet">Zatiaľ žiadne štatistiky 📻</string>
+    <string name="start_radio_to_listen">Spusťte rádio a začnite počúvať.</string>
+
+    <string name="user">Užívateľ</string>
+    <string name="logout_title">Odhlásenie</string>
+    <string name="logout_confirmation">Naozaj sa chcete odhlásiť z účtu %1$s?</string>
+    <string name="logout_button">Odhlásiť sa</string>
+    <string name="user_not_logged_in">Užívateľ nie je prihlásený</string>
+    <string name="login_failed">Prihlásenie zlyhalo alebo bolo zrušené.</string>
+    <string name="login_google">Prihlásiť sa cez Google</string>
+    <string name="login_subtitle">Prihlás sa a ulož si svoje obľúbené stanice</string>
+
+    <string name="cancel">Zrušiť</string>
+    <string name="light_mode">Svetlý mód ☀️</string>
+    <string name="dark_mode">Tmavý mód 🌙</string>
+    <string name="profile_photo">Profilová fotka</string>
+    <string name="favorites">Obľúbené</string>
+    <string name="statistics">Štatistiky</string>
+    <string name="home">Domov</string>
+    <string name="add">Pridať</string>
+    <string name="pause">Pozastaviť</string>
+    <string name="play">Prehrať</string>
+
+    <string name="enter_radio_name">Zadajte názov rádia</string>
+    <string name="no_radio_found">Žiadne rádio nenájdené 😕</string>
+    <string name="live_broadcast">Živé vysielanie</string>
+    <string name="cannot_save_live">Živé vysielanie nie je možné uložiť</string>
+    <string name="song_saved">Skladba bola uložená! ❤️</string>
+    <string name="cannot_save_invalid_song">Živé vysielanie alebo prázdny názov nie je možné uložiť.</string>
+    <string name="app_title">Česko-Slovenské Rádiá  🇨🇿 🇸🇰</string>
+</resources>

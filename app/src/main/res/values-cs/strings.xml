@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Radio Player CZSK</string>
+    <string name="success_saved">Úspěšně uloženo:</string>
+    <string name="seconds">sekund</string>
+    <string name="minutes">minut</string>
+    <string name="hours">hodin</string>
+    <string name="error_saving_stats">Chyba při ukládání statistik</string>
+    <string name="no_stats_yet">Zatím žádné statistiky 📻</string>
+    <string name="start_radio_to_listen">Spusťte rádio a začněte poslouchat.</string>
+    <string name="user">Uživatel</string>
+    <string name="logout_title">Odhlášení</string>
+    <string name="logout_confirmation">Opravdu se chcete odhlásit z účtu %1$s?</string>
+    <string name="logout_button">Odhlásit se</string>
+    <string name="user_not_logged_in">Uživatel není přihlášen</string>
+    <string name="login_failed">Přihlášení selhalo nebo bylo zrušeno.</string>
+    <string name="login_google">Přihlásit se přes Google</string>
+    <string name="login_subtitle">Přihlas se a ulož si své oblíbené stanice</string>
+    <string name="cancel">Zrušit</string>
+    <string name="light_mode">Světlý mód ☀️</string>
+    <string name="dark_mode">Tmavý mód 🌙</string>
+    <string name="profile_photo">Profilová fotka</string>
+    <string name="favorites">Oblíbené</string>
+    <string name="statistics">Statistiky</string>
+    <string name="home">Domů</string>
+    <string name="add">Přidat</string>
+    <string name="pause">Pozastavit</string>
+    <string name="play">Přehrát</string>
+    <string name="enter_radio_name">Zadejte název rádia</string>
+    <string name="no_radio_found">Žádné rádio nenalezeno 😕</string>
+    <string name="live_broadcast">Živé vysílání</string>
+    <string name="cannot_save_live">Živé vysílání nelze uložit</string>
+    <string name="song_saved">Skladba byla uložena! ❤️</string>
+    <string name="cannot_save_invalid_song">Živé vysílání nebo prázdný název nelze uložit.</string>
+    <string name="app_title">Česko-Slovenské Rádia  🇨🇿 🇸🇰</string>
+</resources>

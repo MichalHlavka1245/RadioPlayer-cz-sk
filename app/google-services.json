@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "754529056689",
+    "project_id": "radia-b5972",
+    "storage_bucket": "radia-b5972.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754529056689:android:932f40fee7e0611ddc2f90",
+        "android_client_info": {
+          "package_name": "com.example.radio_player_czsk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "754529056689-2clmdhh1k6bjogpi033c2jr4gvq5oqlc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.radio_player_czsk",
+            "certificate_hash": "5e992997526cec7ce9f2b225f58bc877a6296394"
+          }
+        },
+        {
+          "client_id": "754529056689-4j9op52nd11f2rsih02k5plkdn0c7rla.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEGxvOvKTYkZocmtTqc_f9XsuijfPFv7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "754529056689-4j9op52nd11f2rsih02k5plkdn0c7rla.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
