@@ -57,15 +57,20 @@ Mobilná Android aplikácia slúžiaca na streamovanie slovenských a českých 
 
 Projekt bol nakonfigurovaný tak, aby bolo jeho spustenie čo najjednoduchšie a nevyžadovalo žiadne dodatočné nastavovanie Firebase konzoly z Vašej strany.
 
+
 1. **Klonovanie repozitára:**
-```bash
+ ```bash
    git clone [https://github.com/MichalHlavka1245/RadioPlayer-cz-sk.git](https://github.com/MichalHlavka1245/RadioPlayer-cz-sk.git)
 
-2. **Otvorenie v Android Studio:**
-  Otvorte Android Studio, zvoľte Open a vyberte stiahnutý priečinok projektu. Počkajte na dokončenie synchronizácie zostavenia (Gradle Sync).
 
-Konfigurácia podpisu (Dôležité):
-Súčasťou repozitára je zdieľaný vývojársky kľúč app/debug.keystore. Súbor build.gradle.kts je nastavený tak, aby automaticky použil tento kľúč pre debug zostavu. Vďaka tomu Vám bude Google prihlasovanie a prepojenie s Firebase fungovať okamžite bez nutnosti generovať vlastný SHA-1 kľúč.
+    Otvorenie v Android Studio:
+    Otvorte Android Studio, zvoľte Open a vyberte stiahnutý priečinok projektu. Počkajte na dokončenie synchronizácie zostavenia (Gradle Sync).
 
-Spustenie aplikácie:
-Pripojte fyzické Android zariadenie (so zapnutým USB Debuggingom) alebo spustite emulátor (odporúčané API 30+) a kliknite na tlačidlo Run (Zelená šípka).
+    Konfigurácia podpisu (Dôležité):
+    Súčasťou repozitára je zdieľaný vývojársky kľúč app/debug.keystore. Súbor build.gradle.kts je nastavený tak, aby automaticky použil tento kľúč pre debug zostavu. Vďaka tomu Vám bude Google prihlasovanie a prepojenie s Firebase fungovať okamžite bez nutnosti generovať vlastný SHA-1 kľúč.
+
+    Spustenie aplikácie:
+    Pripojte fyzické Android zariadenie (so zapnutým USB Debuggingom) alebo spustite emulátor (odporúčané API 30+) a kliknite na tlačidlo Run (Zelená šípka).
+
+
+
