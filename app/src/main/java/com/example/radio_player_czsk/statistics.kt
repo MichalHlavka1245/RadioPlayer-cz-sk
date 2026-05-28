@@ -200,8 +200,9 @@ fun StatisticsScreen(
                         horizontalAlignment = Alignment.Start
                     ) {
                         items(statistics.toList()) { (stationName, totalSeconds) ->
+                            // 🛠️ TU BOLA ZMENA: Používame našu novú gramatickú funkciu
                             Text(
-                                text = "$stationName : ${StatisticsManager.formatListeningTime(totalSeconds)}",
+                                text = "$stationName : ${formatListeningTimeSlovak(totalSeconds)}",
                                 color = textColor,
                                 fontSize = 22.sp,
                                 fontWeight = FontWeight.Medium
@@ -239,4 +240,49 @@ fun StatisticsScreen(
             }
         }
     }
+}
+
+/**
+ * 🇸🇰 Pomocná funkcia pre inteligentné formátovanie času so správnou slovenskou gramatikou.
+ */
+private fun formatListeningTimeSlovak(totalSeconds: Long): String {
+    if (totalSeconds <= 0) return "0 sekúnd"
+
+    val hours = totalSeconds / 3600
+    val minutes = (totalSeconds % 3600) / 60
+    val seconds = totalSeconds % 60
+
+    val timeParts = mutableListOf<String>()
+
+    // 🕐 Gramatika pre hodiny
+    if (hours > 0) {
+        val hoursText = when {
+            hours == 1L -> "1 hodina"
+            hours in 2L..4L -> "$hours hodiny"
+            else -> "$hours hodín"
+        }
+        timeParts.add(hoursText)
+    }
+
+    // 🕒 Gramatika pre minúty
+    if (minutes > 0) {
+        val minutesText = when {
+            minutes == 1L -> "1 minúta"
+            minutes in 2L..4L -> "$minutes minúty"
+            else -> "$minutes minút"
+        }
+        timeParts.add(minutesText)
+    }
+
+    //  秒 Gramatika pre sekundy (zobrazujeme iba ak nemáme hodiny, alebo ak ostali drobné sekundy)
+    if (seconds > 0 || timeParts.isEmpty()) {
+        val secondsText = when {
+            seconds == 1L -> "1 sekunda"
+            seconds in 2L..4L -> "$seconds sekundy"
+            else -> "$seconds sekúnd"
+        }
+        timeParts.add(secondsText)
+    }
+
+    return timeParts.joinToString(" ")
 }
