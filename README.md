@@ -6,18 +6,18 @@ Radio Player CZ/SK
 
 A mobile Android application designed for streaming Czech and Slovak radio stations. The project utilizes modern Android libraries (Kotlin) and the Firebase cloud platform for data and user management.
 
-Key Features:
+### Key Features:
 - Radio Streaming: Seamless background playback of selected radio station audio streams.
 - Search Functionality: Fast real-time filtering of radio stations.
 - Favorites: Ability to save favorite songs/stations linked directly to the user's account.
 - Statistics: Tracking and storing listening metrics individually for each user.
 - Authentication: Secure login via Google Account.
 
-Architecture and Backend:
+### Architecture and Backend:
 - Cloud Firestore: A NoSQL database used to fetch the radio station directory and store user statistics and favorites. The database is secured using strict Firestore Security Rules.
 - Firebase Auth: User account management and Google Sign-In integration.
 
-Instructions for the Teacher on How to Run the Project:
+### Instructions  on How to Run the Project:
 
 The project has been pre-configured to ensure the setup is as straightforward as possible, requiring no additional Firebase console configuration on your end.
 
@@ -25,13 +25,13 @@ The project has been pre-configured to ensure the setup is as straightforward as
    ```bash
      git clone https://github.com/MichalHlavka1245/RadioPlayer-cz-sk.git
 
-2. Open in Android Studio:
+2. **Open in Android Studio:**
 Open Android Studio, select Open, and choose the cloned project folder. Wait for the Gradle Sync to complete.
 
-3. Signing Configuration (Important):
+3. **Signing Configuration (Important):**
 The repository includes a shared developer keystore located at app/debug.keystore. The build.gradle.kts file is configured to automatically use this keystore for the debug build. This ensures that Google Sign-In and Firebase integration will work out of the box without requiring you to generate a custom SHA-1 fingerprint.
 
-4. Run the Application:
+4. **Run the Application:**
 Connect a physical Android device (with USB Debugging enabled) or start an emulator (API 30+ recommended) and click the Run (Green arrow) button.
 
 ---
@@ -53,7 +53,7 @@ Mobilná Android aplikácia slúžiaca na streamovanie slovenských a českých 
 
 ---
 
-### 📦 Pokyny na spustenie pre vyučujúceho
+### 📦 Pokyny na spustenie 
 
 Projekt bol nakonfigurovaný tak, aby bolo jeho spustenie čo najjednoduchšie a nevyžadovalo žiadne dodatočné nastavovanie Firebase konzoly z Vašej strany.
 
