@@ -1,8 +1,8 @@
 Radio Player CZ/SK
 
-English version is available below. Slovak version is located further down.
 
-English Version
+
+## 🇬🇧 English Version
 
 A mobile Android application designed for streaming Czech and Slovak radio stations. The project utilizes modern Android libraries (Kotlin) and the Firebase cloud platform for data and user management.
 
@@ -59,18 +59,25 @@ Projekt bol nakonfigurovaný tak, aby bolo jeho spustenie čo najjednoduchšie a
 
 
 1. **Klonovanie repozitára:**
- ```bash
-   git clone [https://github.com/MichalHlavka1245/RadioPlayer-cz-sk.git](https://github.com/MichalHlavka1245/RadioPlayer-cz-sk.git)
+   ```bash
+     git clone https://github.com/MichalHlavka1245/RadioPlayer-cz-sk.git
+   
+3. **Otvorenie v Android Studio:**
+Otvorte Android Studio, zvoľte Open a vyberte stiahnutý priečinok projektu. Počkajte na dokončenie synchronizácie zostavenia (Gradle Sync).
+
+4. **Konfigurácia podpisu (Dôležité):**
+Súčasťou repozitára je zdieľaný vývojársky kľúč app/debug.keystore. Súbor build.gradle.kts je nastavený tak, aby automaticky použil tento kľúč pre debug zostavu. Vďaka tomu Vám bude Google prihlasovanie a prepojenie s Firebase fungovať okamžite bez nutnosti generovať vlastný SHA-1 kľúč.
+
+5. **Spustenie aplikácie:**
+Pripojte fyzické Android zariadenie (so zapnutým USB Debuggingom) alebo spustite emulátor (odporúčané API 30+) a kliknite na tlačidlo Run (Zelená šípka).
+
+ 
 
 
-    Otvorenie v Android Studio:
-    Otvorte Android Studio, zvoľte Open a vyberte stiahnutý priečinok projektu. Počkajte na dokončenie synchronizácie zostavenia (Gradle Sync).
+ 
+ 
 
-    Konfigurácia podpisu (Dôležité):
-    Súčasťou repozitára je zdieľaný vývojársky kľúč app/debug.keystore. Súbor build.gradle.kts je nastavený tak, aby automaticky použil tento kľúč pre debug zostavu. Vďaka tomu Vám bude Google prihlasovanie a prepojenie s Firebase fungovať okamžite bez nutnosti generovať vlastný SHA-1 kľúč.
-
-    Spustenie aplikácie:
-    Pripojte fyzické Android zariadenie (so zapnutým USB Debuggingom) alebo spustite emulátor (odporúčané API 30+) a kliknite na tlačidlo Run (Zelená šípka).
+  
 
 
 
