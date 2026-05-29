@@ -32,4 +32,16 @@
     <string name="song_saved">Song saved! ❤️</string>
     <string name="cannot_save_invalid_song">Live broadcast or empty name cannot be saved.</string>
     <string name="app_title">Czecho-Slovak Radios 🇨🇿 🇸🇰</string>
+    <plurals name="stat_hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+    <plurals name="stat_minutes">
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+    <plurals name="stat_seconds">
+        <item quantity="one">%d second</item>
+        <item quantity="other">%d seconds</item>
+    </plurals>
 </resources>

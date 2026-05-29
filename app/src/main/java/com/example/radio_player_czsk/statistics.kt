@@ -1,5 +1,6 @@
 package com.example.radio_player_czsk
 
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -120,8 +121,6 @@ fun StatisticsScreen(
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                //LanguageSelector(onLanguageChanged = onLanguageChanged)
-
                 /* 👤 DYNAMICKÝ PROFILOVÝ AVATAR */
                 Box(
                     modifier = Modifier
@@ -200,9 +199,9 @@ fun StatisticsScreen(
                         horizontalAlignment = Alignment.Start
                     ) {
                         items(statistics.toList()) { (stationName, totalSeconds) ->
-                            // 🛠️ TU BOLA ZMENA: Používame našu novú gramatickú funkciu
+                            // 🛠️ ZMENA: Používame novú lokalizovanú funkciu, ktorej posielame context
                             Text(
-                                text = "$stationName : ${formatListeningTimeSlovak(totalSeconds)}",
+                                text = "$stationName : ${formatListeningTime(totalSeconds, context)}",
                                 color = textColor,
                                 fontSize = 22.sp,
                                 fontWeight = FontWeight.Medium
@@ -243,45 +242,34 @@ fun StatisticsScreen(
 }
 
 /**
- * 🇸🇰 Pomocná funkcia pre inteligentné formátovanie času so správnou slovenskou gramatikou.
+ * 🌍 Dynamická funkcia pre formátovanie času využívajúca Android Plurals systém.
+ * Automaticky prekladá a skloňuje (SK / CZ / EN) na základe nastaveného jazyka v systéme.
  */
-private fun formatListeningTimeSlovak(totalSeconds: Long): String {
-    if (totalSeconds <= 0) return "0 sekúnd"
+private fun formatListeningTime(totalSeconds: Long, context: Context): String {
+    if (totalSeconds <= 0) {
+        return context.resources.getQuantityString(R.plurals.stat_seconds, 0, 0)
+    }
 
     val hours = totalSeconds / 3600
     val minutes = (totalSeconds % 3600) / 60
     val seconds = totalSeconds % 60
 
     val timeParts = mutableListOf<String>()
+    val res = context.resources
 
-    // 🕐 Gramatika pre hodiny
+    // Hodiny
     if (hours > 0) {
-        val hoursText = when {
-            hours == 1L -> "1 hodina"
-            hours in 2L..4L -> "$hours hodiny"
-            else -> "$hours hodín"
-        }
-        timeParts.add(hoursText)
+        timeParts.add(res.getQuantityString(R.plurals.stat_hours, hours.toInt(), hours.toInt()))
     }
 
-    // 🕒 Gramatika pre minúty
+    // Minúty
     if (minutes > 0) {
-        val minutesText = when {
-            minutes == 1L -> "1 minúta"
-            minutes in 2L..4L -> "$minutes minúty"
-            else -> "$minutes minút"
-        }
-        timeParts.add(minutesText)
+        timeParts.add(res.getQuantityString(R.plurals.stat_minutes, minutes.toInt(), minutes.toInt()))
     }
 
-    //  秒 Gramatika pre sekundy (zobrazujeme iba ak nemáme hodiny, alebo ak ostali drobné sekundy)
+    // Sekundy (zobrazia sa len vtedy, ak zostal nejaký zvyšok sekúnd alebo ak je celkový čas menší ako minúta)
     if (seconds > 0 || timeParts.isEmpty()) {
-        val secondsText = when {
-            seconds == 1L -> "1 sekunda"
-            seconds in 2L..4L -> "$seconds sekundy"
-            else -> "$seconds sekúnd"
-        }
-        timeParts.add(secondsText)
+        timeParts.add(res.getQuantityString(R.plurals.stat_seconds, seconds.toInt(), seconds.toInt()))
     }
 
     return timeParts.joinToString(" ")
