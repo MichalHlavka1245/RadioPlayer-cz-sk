@@ -43,13 +43,13 @@ fun StatisticsScreen(
     var showSignOutDialog by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
-    // Načítanie dát používateľa
+
     val currentUser = remember { googleAuthUiClient.getSignedInUser() }
     val userPhotoUrl = currentUser?.photoUrl
     val userDisplayName = currentUser?.displayName ?: context.getString(R.string.user)
     val firstLetter = (currentUser?.displayName ?: currentUser?.email ?: "R").take(1).uppercase()
 
-    // 🚀 ODBERANIE LIVE ŠTATISTÍK Z FIREBASE
+    
     val statistics by StatisticsManager.observeStatistics().collectAsState(initial = emptyMap())
 
     val backgroundColor = if (isDarkMode) FigmaDarkBg else FigmaLightBg
@@ -57,7 +57,6 @@ fun StatisticsScreen(
     val textColor = if (isDarkMode) Color.White else Color.Black
     val bottomIconColor = if (isDarkMode) Color.White else Heart_Light
 
-    // 🛑 Dialóg na odhlásenie
     if (showSignOutDialog) {
         AlertDialog(
             onDismissRequest = { showSignOutDialog = false },
@@ -199,7 +198,7 @@ fun StatisticsScreen(
                         horizontalAlignment = Alignment.Start
                     ) {
                         items(statistics.toList()) { (stationName, totalSeconds) ->
-                            // 🛠️ ZMENA: Používame novú lokalizovanú funkciu, ktorej posielame context
+                            
                             Text(
                                 text = "$stationName : ${formatListeningTime(totalSeconds, context)}",
                                 color = textColor,
@@ -241,10 +240,7 @@ fun StatisticsScreen(
     }
 }
 
-/**
- * 🌍 Dynamická funkcia pre formátovanie času využívajúca Android Plurals systém.
- * Automaticky prekladá a skloňuje (SK / CZ / EN) na základe nastaveného jazyka v systéme.
- */
+
 private fun formatListeningTime(totalSeconds: Long, context: Context): String {
     if (totalSeconds <= 0) {
         return context.resources.getQuantityString(R.plurals.stat_seconds, 0, 0)
@@ -257,17 +253,17 @@ private fun formatListeningTime(totalSeconds: Long, context: Context): String {
     val timeParts = mutableListOf<String>()
     val res = context.resources
 
-    // Hodiny
+    
     if (hours > 0) {
         timeParts.add(res.getQuantityString(R.plurals.stat_hours, hours.toInt(), hours.toInt()))
     }
 
-    // Minúty
+  
     if (minutes > 0) {
         timeParts.add(res.getQuantityString(R.plurals.stat_minutes, minutes.toInt(), minutes.toInt()))
     }
 
-    // Sekundy (zobrazia sa len vtedy, ak zostal nejaký zvyšok sekúnd alebo ak je celkový čas menší ako minúta)
+    
     if (seconds > 0 || timeParts.isEmpty()) {
         timeParts.add(res.getQuantityString(R.plurals.stat_seconds, seconds.toInt(), seconds.toInt()))
     }
