@@ -33,14 +33,14 @@ fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            // 🔥 PREKLAD: Názov aplikácie zo strings.xml
+            
             text = stringResource(id = R.string.app_title),
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 8.dp)
         )
         Text(
-            // 🔥 PREKLAD: Podnadpis zo strings.xml
+            
             text = stringResource(id = R.string.login_subtitle),
             fontSize = 14.sp,
             color = Color.Gray,
@@ -55,7 +55,7 @@ fun LoginScreen(
                         Toast.makeText(context, "Prihlásenie úspešné!", Toast.LENGTH_LONG).show()
                         onSignInSuccess()
                     } else {
-                        // Tieto toasty môžeš neskôr tiež prehodiť do strings.xml, ak budeš chcieť
+                        
                         Toast.makeText(context, "Prihlásenie zlyhalo alebo bolo zrušené.", Toast.LENGTH_LONG).show()
                     }
                 }
@@ -67,7 +67,7 @@ fun LoginScreen(
                 .padding(horizontal = 32.dp)
         ) {
             Text(
-                // 🔥 PREKLAD: Text na tlačidle zo strings.xml
+                
                 text = stringResource(id = R.string.login_google),
                 color = Color.White,
                 fontSize = 16.sp
