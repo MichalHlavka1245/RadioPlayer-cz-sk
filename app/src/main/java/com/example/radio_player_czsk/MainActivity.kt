@@ -30,18 +30,18 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onCreate: Spustenie MainActivity")
 
         setContent {
-            // 🔥 ZMENA: Chytíme si skutočný Activity kontext hneď na začiatku, kým ho neprepíšeme nižšie
+            
             val realActivityContext = LocalContext.current
 
             val context = LocalContext.current
 
-            // 💾 Načítanie uloženého jazyka z SharedPreferences pri štarte
+            
             val sharedPrefs = remember { context.getSharedPreferences("settings", Context.MODE_PRIVATE) }
             var currentLanguageTag by rememberSaveable {
                 mutableStateOf(sharedPrefs.getString("locale_tag", "sk") ?: "sk")
             }
 
-            // 🌍 Dynamické vytvorenie lokalizovaného kontextu naživo v Compose
+            
             val localizedContext = remember(currentLanguageTag) {
                 val locale = Locale.forLanguageTag(currentLanguageTag)
                 Locale.setDefault(locale)
@@ -54,10 +54,10 @@ class MainActivity : ComponentActivity() {
                 RadioRepository.fetchSlovakAndCzechRadios()
             }
 
-            // Použijeme rememberSaveable, aby dark mode prežil otočenie displeja
+            
             var isDarkMode by rememberSaveable { mutableStateOf(false) }
 
-            // 🔥 KĽÚČOVÝ FIX: Vstrekneme lokalizovaný kontext do celého Compose stromu.
+            
             CompositionLocalProvider(
                 LocalContext provides localizedContext,
                 LocalConfiguration provides localizedContext.resources.configuration
@@ -69,10 +69,10 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     startDestination = startDestination
                 ) {
-                    // 🔐 OBRAZOVKA PRIHLÁSENIA
+                    
                     composable("login") {
                         LoginScreen(
-                            // 🔥 ZMENA: Posielame čistý realActivityContext na spustenie Google okna
+                            
                             activityContext = realActivityContext,
                             googleAuthUiClient = googleAuthUiClient,
                             onSignInSuccess = {
@@ -83,7 +83,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
-                    // 🏠 DOMÁCA OBRAZOVKA
+                   
                     composable("home") {
                         Homescreen(
                             googleAuthUiClient = googleAuthUiClient,
@@ -110,7 +110,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
-                    // 📻 PREHRÁVAČ RÁDIA
+                    
                     composable("player") {
                         val stationName = navController.previousBackStackEntry?.savedStateHandle?.get<String>("station_name") ?: ""
                         val stationUrl = navController.previousBackStackEntry?.savedStateHandle?.get<String>("station_url") ?: ""
@@ -133,7 +133,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
-                    // ❤️ OBĽÚBENÉ SKLADBY
+                    
                     composable("favorites") {
                         FavoritesScreen(
                             googleAuthUiClient = googleAuthUiClient,
@@ -149,7 +149,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
-                    // 📊 ŠTATISTIKY
+                   
                     composable("statistics") {
                         StatisticsScreen(
                             googleAuthUiClient = googleAuthUiClient,
