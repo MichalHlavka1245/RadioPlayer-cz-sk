@@ -32,26 +32,26 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun FavoritesScreen(
-    googleAuthUiClient: GoogleAuthUiClient, // 🚀 PRIDANÝ PARAMETER PRE FIREBASE/GOOGLE ÚČET
+    googleAuthUiClient: GoogleAuthUiClient, 
     onNavigateToHome: () -> Unit,
-    isDarkMode: Boolean,                // 👈 Pridaj sem
+    isDarkMode: Boolean,                
     onToggleDarkMode: () -> Unit,
     onNavigateToStatistics: () -> Unit,
-    onLogOutSuccess: () -> Unit // 🚀 CALLBACK PRE ODHLÁSENIE
+    onLogOutSuccess: () -> Unit 
 ) {
 
     val localizedContext = LocalContext.current
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    var showSignOutDialog by remember { mutableStateOf(false) } // Stav pre odhlasovací dialóg
+    var showSignOutDialog by remember { mutableStateOf(false) } 
 
-    // Získame dáta prihláseného usera (identicky ako v Homescreen a PlayerScreen)
+  
     val currentUser = remember { googleAuthUiClient.getSignedInUser() }
     val userPhotoUrl = currentUser?.photoUrl
     val userDisplayName = currentUser?.displayName ?: localizedContext.getString(R.string.user)
     val firstLetter = (currentUser?.displayName ?: currentUser?.email ?: "R").take(1).uppercase()
 
-    // ✨ ODBERANIE LIVE DÁT Z FIREBASE MANAŽÉRA
+   
     val favoriteSongs by FavoritesManager.observeFavoriteSongs().collectAsState(initial = emptyList())
 
     val backgroundColor = if (isDarkMode) FigmaDarkBg else FigmaLightBg
@@ -59,7 +59,7 @@ fun FavoritesScreen(
     val textColor = if (isDarkMode) Color.White else Color.Black
     val bottomIconColor = if (isDarkMode) Color.White else Heart_Light
 
-    // 🛑 DIALÓG NA ODHLÁSENIE
+    
     if (showSignOutDialog) {
         AlertDialog(
             onDismissRequest = { showSignOutDialog = false },
@@ -131,7 +131,7 @@ fun FavoritesScreen(
                         .size(45.dp)
                         .clip(CircleShape)
                         .background(ProfileBlue)
-                        .clickable { showSignOutDialog = true }, // Po kliknutí otvorí ponuku na odhlásenie
+                        .clickable { showSignOutDialog = true }, 
                     contentAlignment = Alignment.Center
                 ) {
                     if (userPhotoUrl != null) {
