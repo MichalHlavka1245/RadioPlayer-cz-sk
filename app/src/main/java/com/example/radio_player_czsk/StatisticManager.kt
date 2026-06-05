@@ -15,15 +15,13 @@ object StatisticsManager {
     private val userId: String
         get() = auth.currentUser?.uid ?: "anonymous"
 
-    /**
-     * Uloží odpočúvaný čas pre konkrétne rádio (pripočíta sekundy k existujúcim)
-     */
+    
     fun saveListeningTime(stationName: String, seconds: Long) {
         if (seconds <= 0) return
 
         val userDocRef = db.collection("statistics").document(userId)
 
-        // Použijeme FieldValue.increment na bezpečné pripočítanie sekúnd vo Firebase
+    
         userDocRef.set(
             mapOf(stationName to FieldValue.increment(seconds)),
             com.google.firebase.firestore.SetOptions.merge()
@@ -34,9 +32,7 @@ object StatisticsManager {
         }
     }
 
-    /**
-     * Sleduje štatistiky používateľa v reálnom čase
-     */
+    
     fun observeStatistics(): Flow<Map<String, Long>> = callbackFlow {
         val docRef = db.collection("statistics").document(userId)
 
@@ -59,12 +55,7 @@ object StatisticsManager {
         awaitClose { subscription.remove() }
     }
 
-    /**
-     * Naformátuje sekundy na text podľa pravidiel:
-     * - pod minútu -> "X sekúnd"
-     * - pod hodinu -> "X minút"
-     * - nad hodinu -> "X hodín" (alebo s desatinným číslom/zvyškom, ak chceš presnosť)
-     */
+   
     fun formatListeningTime(totalSeconds: Long): String {
         return when {
             totalSeconds < 60 -> {
