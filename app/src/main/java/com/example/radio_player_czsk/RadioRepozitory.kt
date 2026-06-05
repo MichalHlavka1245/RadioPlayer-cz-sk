@@ -11,11 +11,11 @@ object RadioRepository {
 
     private const val TAG = "RadioDebug"
 
-    // Singleton cache — načíta sa raz pri štarte z Firebase
+    
     var cachedStations: List<RadioStation> = emptyList()
         private set
 
-    // ⚡ Bleskové načítanie spoločného zoznamu z Firebase Firestore
+    
     suspend fun fetchSlovakAndCzechRadios(): List<RadioStation> = withContext(Dispatchers.IO) {
         try {
             Log.d(TAG, "⚡ Načítavam rádiá z Firebase Firestore...")
@@ -23,7 +23,7 @@ object RadioRepository {
             val db = FirebaseFirestore.getInstance()
             val snapshot = db.collection("radios").get().await()
 
-            // Firebase automaticky namapuje dokumenty na objekty RadioStation
+            
             val finalRadioList = snapshot.toObjects(RadioStation::class.java)
 
             cachedStations = finalRadioList
@@ -36,7 +36,7 @@ object RadioRepository {
         }
     }
 
-    // Normalizácia: odstráni diakritiku, medzery, prevedie na lowercase
+    
     fun normalize(text: String): String {
         val normalized = Normalizer.normalize(text, Normalizer.Form.NFD)
         return normalized
@@ -45,7 +45,7 @@ object RadioRepository {
             .lowercase()
     }
 
-    // Vyhľadávanie nad nacachovanými dátami z Firebase
+   
     fun searchStations(query: String): List<RadioStation> {
         if (query.isBlank()) return emptyList()
         val normalizedQuery = normalize(query)
