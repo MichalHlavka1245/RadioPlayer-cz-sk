@@ -65,7 +65,7 @@ fun PlayerScreen(
 
     var trackTitle by remember { mutableStateOf("Živé vysielanie") }
     var playStartTime by remember { mutableStateOf<Long?>(null) }
-    var isPlaying by remember { mutableStateOf(false) } // Presunuté vyššie kvôli prístupu v ExoPlayeri
+    var isPlaying by remember { mutableStateOf(false) } 
 
     val exoPlayer = remember(station.url) {
         ExoPlayer.Builder(context)
@@ -86,7 +86,7 @@ fun PlayerScreen(
                     }
                     override fun onIsPlayingChanged(playing: Boolean) {
                         Log.d("EXOPLAYER", "Prehráva: $playing")
-                        isPlaying = playing // 🔥 AUTOMATICKÁ SYNCHRONIZÁCIA: Ak rádio začne reálne hrať/pauzovať, stav sa zmení sám
+                        isPlaying = playing 
                     }
                     override fun onMediaMetadataChanged(mediaMetadata: MediaMetadata) {
                         val title = mediaMetadata.title
@@ -107,7 +107,7 @@ fun PlayerScreen(
             }
     }
 
-    // Funkcia na výpočet a bezpečné odoslanie nazbieraných sekúnd do Firebase
+
     val stopListeningAndSave = {
         if (playStartTime != null) {
             val elapsedMillis = System.currentTimeMillis() - playStartTime!!
@@ -120,30 +120,30 @@ fun PlayerScreen(
         }
     }
 
-    // 💡 REAKTÍVNY ČASOVAČ: Riadi pridelenie času do premennej playStartTime a priebežné ukladanie
+  
     LaunchedEffect(isPlaying) {
         if (isPlaying) {
-            // Rádio začalo hrať -> nastavíme štartovací bod na aktuálny čas v milisekundách
+        
             playStartTime = System.currentTimeMillis()
 
-            // Nekonečná slučka bežiaca na pozadí počas prehrávania
+            
             while (true) {
-                delay(30000L) // Počkáme 30 sekúnd
+                delay(30000L) 
                 val now = System.currentTimeMillis()
                 val diff = (now - (playStartTime ?: now)) / 1000
 
                 if (diff > 0) {
                     StatisticsManager.saveListeningTime(station.name, diff)
-                    playStartTime = now // Posunieme štartovací bod na "teraz", aby sa čas nepočítal duplicitne
+                    playStartTime = now 
                 }
             }
         } else {
-            // Používateľ stlačil pauzu -> okamžite uložíme doterajší čas
+            
             stopListeningAndSave()
         }
     }
 
-    // Správa životného cyklu prehrávača a uloženie pri opustení obrazovky (Tlačidlo späť, domov...)
+    
     DisposableEffect(station.url) {
         onDispose {
             stopListeningAndSave()
@@ -159,7 +159,7 @@ fun PlayerScreen(
 
     val isLive = FavoritesManager.isLiveBroadcast(trackTitle, station.name)
 
-    // 🛑 DIALÓG NA ODHLÁSENIE
+   
     if (showSignOutDialog) {
         AlertDialog(
             onDismissRequest = { showSignOutDialog = false },
@@ -225,7 +225,7 @@ fun PlayerScreen(
 
 
 
-                /* 👤 DYNAMICKÝ PROFILOVÝ AVATAR */
+                
                 Box(
                     modifier = Modifier
                         .size(45.dp)
