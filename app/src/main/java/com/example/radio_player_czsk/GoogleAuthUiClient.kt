@@ -14,10 +14,10 @@ class GoogleAuthUiClient(private val context: Context) {
     private val auth = FirebaseAuth.getInstance()
     private val credentialManager = CredentialManager.create(context)
 
-    // Overenie, či už je užívateľ prihlásený z minula
+ 
     fun getSignedInUser() = auth.currentUser
 
-    // Spustí Google okno a prihlási užívateľa do Firebase databázy
+   
     suspend fun signIn(activityContext: android.content.Context): Boolean {
         return try {
             Log.d("GOOGLE_AUTH", "1. Spúšťam prihlasovanie...")
@@ -37,7 +37,7 @@ class GoogleAuthUiClient(private val context: Context) {
 
             Log.d("GOOGLE_AUTH", "2. Google vrátil typ: ${credential.type}")
 
-            // ✨ UNIVERZÁLNE OVERENIE: Skontrolujeme nový aj starší typ balíčka
+            
             val idToken = when {
                 credential is GoogleIdTokenCredential -> {
                     Log.d("GOOGLE_AUTH", "3a. Rozpoznaný moderný GoogleIdTokenCredential")
@@ -45,7 +45,7 @@ class GoogleAuthUiClient(private val context: Context) {
                 }
                 credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL -> {
                     Log.d("GOOGLE_AUTH", "3b. Rozpoznaný typ cez stringový identifikátor")
-                    // Vytiahneme token priamo z dát structure
+                   
                     val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(credential.data)
                     googleIdTokenCredential.idToken
                 }
@@ -69,7 +69,7 @@ class GoogleAuthUiClient(private val context: Context) {
             false
         }
     }
-    // Odhlásenie
+    
     fun signOut() {
         auth.signOut()
     }
